@@ -10,7 +10,7 @@ if (token) {
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/api",
+    baseUrl: import.meta.env.VITE_API_URL,
   }),
   endpoints: (builder) => ({
     login: builder.mutation<{ token: string }, LoginRequest>({
