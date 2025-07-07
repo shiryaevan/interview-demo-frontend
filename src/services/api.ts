@@ -19,7 +19,9 @@ export const api = createApi({
           const data = await DefaultService.postApiLogin(body);
           return { data };
         } catch (error: any) {
-          return { error };
+          return {
+            error: error.body,
+          };
         }
       },
     }),

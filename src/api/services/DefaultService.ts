@@ -23,6 +23,10 @@ export class DefaultService {
             url: '/api/login',
             body: requestBody,
             mediaType: 'application/json',
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+            },
         });
     }
     /**
@@ -34,6 +38,10 @@ export class DefaultService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/stats',
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+            },
         });
     }
 }
