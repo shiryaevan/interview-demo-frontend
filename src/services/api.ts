@@ -7,7 +7,7 @@ if (token) {
   OpenAPI.TOKEN = token;
 }
 
-OpenAPI.BASE = import.meta.env.VITE_API_URL;
+OpenAPI.BASE = import.meta.env.PROD ? import.meta.env.VITE_API_URL : "";
 
 export const api = createApi({
   reducerPath: "api",
