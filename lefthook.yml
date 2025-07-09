@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: |
+        echo {staged_files}
+        npx eslint {staged_files} --quiet --report-unused-disable-directives
+    prettier:
+      glob: '*.{js,ts,jsx,tsx,css,scss,json,md}'
+      exclude: 'package-lock.json'
+      run: npx prettier {staged_files} --check
+
+fixer:
+  commands:
+    eslint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: npx eslint {staged_files} --quiet --fix
+    prettier:
+      glob: '*.{js,ts,jsx,tsx,css,scss,json,md}'
+      run: npx prettier {staged_files} --write
