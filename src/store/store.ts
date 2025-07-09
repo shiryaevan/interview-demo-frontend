@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { api } from "../services/api";
+
 import { authSlice } from "@/features/auth/Login/authSlice.ts";
 import { authMiddleware } from "@/store/authMiddleware.ts";
+
+import { api } from "../services/api";
 
 const preloadedToken = localStorage.getItem("token");
 

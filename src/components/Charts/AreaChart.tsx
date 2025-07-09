@@ -1,12 +1,13 @@
 import {
   Area,
+  AreaChart as AreaChartRecharts,
   Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
-  AreaChart as AreaChartRecharts,
 } from "recharts";
+
 import type { ChartProps } from "@/components/Charts/types.ts";
 
 export const AreaChart = ({ data, chartBarsArray, colors }: ChartProps) => {

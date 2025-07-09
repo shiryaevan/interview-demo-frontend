@@ -1,4 +1,11 @@
+import { AlignJustify } from "lucide-react";
+import { useDispatch } from "react-redux";
+
 import { Section } from "@/components/Section";
+import { logout } from "@/features/auth/Login/authSlice.ts";
+import { useRouter } from "@/hooks/useRouter.ts";
+
+import { Button } from "../ui";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,11 +15,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Button } from "../ui";
-import { AlignJustify } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { logout } from "@/features/auth/Login/authSlice.ts";
-import { useRouter } from "@/hooks/useRouter.ts";
 
 export const Header = () => {
   const dispatch = useDispatch();

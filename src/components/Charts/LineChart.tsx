@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+
 import type { ChartProps } from "@/components/Charts/types.ts";
 
 export const LineChart = ({ data, chartBarsArray, colors }: ChartProps) => {

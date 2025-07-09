@@ -1,3 +1,14 @@
+import { useMemo, useState } from "react";
+
+import type { StatsResponse } from "@/api";
+import {
+  AreaChart,
+  BarChart,
+  type ChartData,
+  LineChart,
+  PieChart,
+} from "@/components/Charts";
+import { Layout } from "@/components/Layout";
 import {
   Table,
   TableBody,
@@ -6,16 +17,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Layout } from "@/components/Layout";
-import type { StatsResponse } from "@/api";
-import { useMemo, useState } from "react";
-import {
-  AreaChart,
-  BarChart,
-  type ChartData,
-  LineChart,
-  PieChart,
-} from "@/components/Charts";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group.tsx";
 
 const chartTypesDictionary = [

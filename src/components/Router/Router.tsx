@@ -1,10 +1,9 @@
 import { useStore } from "@nanostores/react";
-
-import { LoginContainer, DashboardContainer } from "@/pages";
+import { redirectPage } from "@nanostores/router";
+import { useEffect } from "react";
 
 import { router } from "@/components/Router/router.ts";
-import { useEffect } from "react";
-import { redirectPage } from "@nanostores/router";
+import { DashboardContainer, LoginContainer } from "@/pages";
 
 export const Router = () => {
   const page = useStore(router);

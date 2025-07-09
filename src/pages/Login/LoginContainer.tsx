@@ -1,10 +1,11 @@
-import { Login } from "@/features/auth/Login";
-import { type LoginRequest, OpenAPI } from "@/api";
-import { useLoginMutation } from "@/services/api.ts";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
+import { type LoginRequest, OpenAPI } from "@/api";
+import { Login } from "@/features/auth/Login";
 import { setToken } from "@/features/auth/Login/authSlice.ts";
 import { useRouter } from "@/hooks/useRouter.ts";
-import { useEffect, useState } from "react";
+import { useLoginMutation } from "@/services/api.ts";
 
 export const LoginContainer = () => {
   const dispatch = useDispatch();

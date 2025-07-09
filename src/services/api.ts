@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { DefaultService } from "@/api/services/DefaultService";
+
 import { type LoginRequest, OpenAPI, type StatsResponse } from "@/api";
+import { DefaultService } from "@/api/services/DefaultService";
 
 const token = localStorage.getItem("token");
 if (token) {

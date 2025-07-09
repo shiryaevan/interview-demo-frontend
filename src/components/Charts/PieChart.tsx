@@ -1,10 +1,11 @@
 import {
   Cell,
-  Pie,
-  ResponsiveContainer,
-  PieChart as PieChartRecharts,
   Legend,
+  Pie,
+  PieChart as PieChartRecharts,
+  ResponsiveContainer,
 } from "recharts";
+
 import type { ChartProps } from "@/components/Charts/types.ts";
 
 export const PieChart = ({

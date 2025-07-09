@@ -1,5 +1,6 @@
-import type { Middleware } from "@reduxjs/toolkit";
 import { redirectPage } from "@nanostores/router";
+import type { Middleware } from "@reduxjs/toolkit";
+
 import { router } from "@/components/Router/router";
 
 interface RejectedAction {
