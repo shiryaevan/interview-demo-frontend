@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import type { StatsResponse } from "@/api";
+import type { Stat, StatsResponse } from "@/api";
 import {
   AreaChart,
   BarChart,
@@ -9,14 +9,7 @@ import {
   PieChart,
 } from "@/components/Charts";
 import { Layout } from "@/components/Layout";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { StatsTable } from "@/components/StatsTable";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group.tsx";
 
 const chartTypesDictionary = [
@@ -77,6 +70,27 @@ const getPieChartData = (
 
 type ChartId = (typeof chartTypesDictionary)[number]["id"];
 
+const getTableData = (stats: Stat[], labelMap: Record<string, string>) => {
+  return stats.flatMap((day) =>
+    day.plants.map(
+      (
+        { harvested, id, fertilizerUsed, height, soilMoisture },
+        localIndex,
+      ) => ({
+        harvested,
+        height,
+        fertilizerUsed,
+        localIndex,
+        soilMoisture,
+        key: `${day.date}-${id}`,
+        name: labelMap[id] ?? id,
+        plantsLength: day.plants.length,
+        date: day.date,
+      }),
+    ),
+  );
+};
+
 export const Dashboard = ({ data }: { data: StatsResponse }) => {
   const { stats, plantTypes } = data;
   const [selectedTab, setSelectedTab] = useState<ChartId>("harvested");
@@ -96,6 +110,11 @@ export const Dashboard = ({ data }: { data: StatsResponse }) => {
       setSelectedTab(value as ChartId);
     }
   };
+
+  const tableData = useMemo(
+    () => getTableData(stats, labelMap),
+    [stats, labelMap],
+  );
 
   return (
     <Layout>
@@ -167,37 +186,8 @@ export const Dashboard = ({ data }: { data: StatsResponse }) => {
       )}
       <div className="w-full">
         <h2 className="mb-4 text-lg font-semibold">Raw Data</h2>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead>Plant</TableHead>
-              <TableHead>Harvested</TableHead>
-              <TableHead>Height</TableHead>
-              <TableHead>Fertilizer Used</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {stats.flatMap((day) =>
-              day.plants.map((plant, index) => (
-                <TableRow key={`${day.date}-${plant.id}`}>
-                  {index === 0 && (
-                    <TableCell
-                      className="align-top"
-                      rowSpan={day.plants.length}
-                    >
-                      {day.date}
-                    </TableCell>
-                  )}
-                  <TableCell>{labelMap[plant.id] ?? plant.id}</TableCell>
-                  <TableCell>{plant.harvested}</TableCell>
-                  <TableCell>{plant.height}</TableCell>
-                  <TableCell>{plant.fertilizerUsed}</TableCell>
-                </TableRow>
-              )),
-            )}
-          </TableBody>
-        </Table>
+
+        <StatsTable data={tableData} />
       </div>
     </Layout>
   );

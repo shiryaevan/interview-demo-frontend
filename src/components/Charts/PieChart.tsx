@@ -13,6 +13,7 @@ export const PieChart = ({
   chartBarsArray,
   colors,
 }: Omit<ChartProps, "data"> & { data: { name: string; value: number }[] }) => {
+  console.log("data", data);
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChartRecharts>
