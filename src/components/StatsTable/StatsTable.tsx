@@ -31,8 +31,6 @@ const tableHeaders: string[] = [
 ];
 
 export const StatsTable = ({ data }: StatsTableProps) => {
-  console.log(data);
-
   return (
     <Table>
       <TableHeader>
