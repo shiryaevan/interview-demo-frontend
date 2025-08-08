@@ -50,7 +50,7 @@ export const Dashboard = ({ data }: { data: StatsResponse }) => {
             <Tabs.Trigger
               key={i.id}
               value={i.id}
-              className="px-3 py-1 rounded border text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="px-3 py-1 rounded border text-sm cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               {i.tabTitle}
             </Tabs.Trigger>
