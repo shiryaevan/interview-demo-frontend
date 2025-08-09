@@ -15,12 +15,18 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm install -g pnpm && pnpm install
+
+    - name: Cache Playwright browsers
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
       run: pnpm exec playwright test
       env:
-        E2E_BASE_URL: https://shiryaevan.github.io/interview-demo-frontend
+        E2E_BASE_URL: https://shiryaevan.github.io/interview-demo-frontend/
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
